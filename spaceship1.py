@@ -22,17 +22,15 @@ move = 1
 screen = pygame.display.set_mode((width,height))
 screen.fill(pygame.Color('yellow'))
 
-s_image = pygame.image.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\spaceship.png")
+s_image = pygame.image.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\spaceship.bmp")
 s_imgx = 50
 s_imgy = height//2
-x = 1
-y = 1
+#x = 1
+#y = 1
 pygame.mixer.music.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\Moderat - Ramadan.mp3")
 pygame.mixer.music.play(-1)
 
 running = True 
-
-
 
 class Ship:
     def __init__(self, image):
@@ -40,15 +38,14 @@ class Ship:
     def move(self):
         global s_imgx, s_imgy, running
         while running:
-            
-                
+              
             for e in pygame.event.get():
                     if e.type==pygame.QUIT:
                         pygame.quit()
                     
             key_input = pygame.key.get_pressed()  
             if key_input[l]:
-                s_imgx -= move
+                s_imgx -= s_imgx-move
             if key_input[u]:
                 s_imgy -= move
             if key_input[r]:
@@ -66,29 +63,19 @@ class Ship:
             
             screen.fill(pygame.Color('Yellow'))
             screen.blit(s_image, (s_imgx, s_imgy))
-            
-                
+  
             pygame.display.flip()
             pygame.display.update()
-            
-            
-                    
-    
-    
-    
-    
 
-ship = Ship
-ship.move(ship)
+ship = Ship(s_image)
+ship.move()
 
 while True:
     e = pygame.event.poll()
     if e.type == pygame.QUIT:
         break
     pygame.display.update()
-    
-       
-      
+     
 pygame.quit()
 
 
