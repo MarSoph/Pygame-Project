@@ -12,7 +12,7 @@ from classes import obstacles
 
 class Ship:
     
-    global screen, bg_color
+    global screen, bg_color, bg_image
     move = 1
     WIDTH=1200
     HEIGHT = 800
@@ -21,51 +21,49 @@ class Ship:
     l = pygame.K_LEFT
     r = pygame.K_RIGHT
     space=pygame.K_SPACE
-    #running=True
-    #s_image = pygame.image.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\spaceship.bmp")
-    #s_imgx = 50
-    #s_imgy = HEIGHT//2
 
     def __init__(self,s_imgx,s_imgy,image):
         self.image = image
         self.s_imgx=s_imgx
         self.s_imgy=s_imgy
         self.running=True
-    #def show(self):
-     #   pygame.image.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\spaceship.bmp")
+        self.im_width=image.get_width()
+        self.im_height=image.get_height()
+        
+    def show(self,colour):
+        global screen
+        pygame.draw.circle(screen, colour, (self.s_imgx+self.im_width/2,self.s_imgy+self.im_width/2),5*self.im_width/8)
         
     def move_m(self):
-        #global HEIGHT,WIDTH,bg_color,screen
-       #while running:
-        ##    for e in pygame.event.get():
-          #          if e.type==pygame.QUIT:
-              #          pygame.quit()
-        #if not self.running:
-         #   return
+        
         while self.running:
+            for e in pygame.event.get():
+                if e.type==pygame.QUIT:
+                    pygame.quit()
+            new_x=self.s_imgx
+            new_y=self.s_imgy
             
             key_input = pygame.key.get_pressed()
-                
-            
             if key_input[self.l]:
-                self.s_imgx -= self.move
+                new_x=self.s_imgx - self.move
             elif key_input[self.u]:
-                self.s_imgy -= self.move
+                new_y=self.s_imgy - self.move
             elif key_input[self.r]:
-                self.s_imgx += self.move
+                new_x=self.s_imgx + self.move
             elif key_input[self.d]:
-                self.s_imgy += self.move
+               new_y= self.s_imgy + self.move
             elif self.s_imgx <= 0:
-                self.s_imgx = 0+10
+               new_x = 0
             elif self.s_imgx >= self.WIDTH:
-                self.s_imgx = self.WIDTH
+                new_x = self.WIDTH-self.im_width
             elif self.s_imgy <= 0:
-                self.s_imgy = 0+10
+                new_y = self.im_height
             elif self.s_imgy >= self.HEIGHT:
-                self.s_imgy = self.HEIGHT
-                
-            #self.image.fill(bg_color)  
-            #screen = pygame.display.set_mode((self.WIDTH,self.HEIGHT))
+                new_y = self.HEIGHT-self.im_height
+           
+            self.show(bg_color)
+            self.s_imgx=new_x
+            self.s_imgy=new_y
             screen.blit(self.image, (self.s_imgx, self.s_imgy))
             pygame.display.flip()
             pygame.display.update()
@@ -89,7 +87,8 @@ screen = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.mixer.music.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\Moderat - Ramadan.mp3")
 pygame.mixer.music.play(-1)
 image = pygame.image.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\spaceship.bmp")
-
+#bg_image=pygame.image.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\spaceship.bmp")
+image.convert()
 #running = True 
 
 # Fill the background
@@ -108,26 +107,29 @@ for i in range(len(obst)):
     pygame.draw.circle(screen, fg_color, obst[i].centre, obst[i].radius)
 ship = Ship(50,HEIGHT//2,image)
 ship.move_m()
-pygame.display.update()
+#pygame.display.update()
 
-pygame.display.flip()
+#pygame.display.flip()
 
 while True:
+    #pygame.event.get()
     #need to write the instractions here 
     #show(F"lives = {lives} , points = {points}")
-    e = pygame.event.poll()
-    if e.type == pygame.QUIT:
-        break
-    elif e.type == pygame.MOUSEBUTTONDOWN :
-        running = True
-        
+    for event in pygame.event.get():
+        e = pygame.event.poll()
+        if event.type == pygame.QUIT:
+            break
+        elif event.type == pygame.MOUSEBUTTONDOWN :
+            running = True
+    #bg_image.fill(bg_color)
+    #screen.blit(bg_color,(ship.s_imgx,ship.s_imgy))
+    #
+            #screen.blit(ship.image, (ship.s_imgx, ship.s_imgy))
+        pygame.display.flip()
+        pygame.display.update()
     
-    #screen.blit(ship.image, (ship.s_imgx, ship.s_imgy))
-    pygame.display.flip()
-    pygame.display.update()
-    
-pygame.display.flip()
-clock.tick(FRAMERATE)
+#pygame.display.flip()
+    clock.tick(FRAMERATE)
 
 pygame.quit() 
 os._exit(0)
