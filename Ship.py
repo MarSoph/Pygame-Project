@@ -5,24 +5,20 @@ Created on Wed Dec  2 21:13:52 2020
 @author: Sofokleous
 """
 import pygame
+import os,sys
 from Bullet import bullets
 WIDTH = 1200
 HEIGHT = 800
-bg_color = pygame.Color("grey")
-fg_color = pygame.Color("black")
 border=50
 
 class Ship(pygame.sprite.Sprite):
-    
-    global screen, bg_color, bg_image
+
     move = 5
 
     def __init__(self): 
         super().__init__()
-        #self.image=pygame.Surface([x,y])
-        #self.image.fill(bg_color)
-        #self.image.set_colorkey(bg_color)
-        self.image=pygame.image.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\spaceship.bmp").convert_alpha()
+        #self.image=pygame.image.load(os.path.join(sys.path[0],"spaceship.bmp")).convert_alpha()
+        self.image=pygame.image.load("spaceship.bmp")
         self.rect=self.image.get_rect()
      
     #methods to move the spaceship

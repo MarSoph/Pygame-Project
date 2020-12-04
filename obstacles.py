@@ -5,7 +5,6 @@ Created on Sat Nov 28 09:37:51 2020
 @author: Sofokleous
 """
 import pygame
-#import random
 WIDTH = 1200
 HEIGHT = 800
 bg_color = pygame.Color("grey")

@@ -9,10 +9,12 @@ Main code for the game
 
 import pygame
 import random
-import os
+import os,sys
 from obstacles import obstacles
 from Ship import Ship
 from Bullet import bullets
+from enemy import Enemy
+from pygame.math import Vector2
 
 WIDTH = 1200
 HEIGHT = 800
@@ -36,14 +38,14 @@ clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("WRITE SOMETHING HERE")
-pygame.mixer.music.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\Moderat - Ramadan.mp3")
+pygame.mixer.music.load("Moderat - Ramadan.mp3")
 pygame.mixer.music.play(-1)
-image = pygame.image.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\spaceship.bmp")
-backim=pygame.image.load("C:/Users\Sofokleous\OneDrive\Έγγραφα\GitHub\Pygame-Project\wallpaper1.bmp")
+backim=pygame.image.load("wallpaper1.bmp")
 
 spriteslist=pygame.sprite.Group() #to initialise a list of all the sprites
 obst_spritelist=pygame.sprite.Group() #initialise a different list for all the obstacles
 bulls_spritelist=pygame.sprite.Group() #initialise a different list for all the bullets
+enemies = pygame.sprite.Group() # list of enemy sprites
 
 #to create 10 objects called obst from class obstacles
 for i in range(10):
@@ -52,6 +54,8 @@ for i in range(10):
     obst.rect.y=random.randint(0,HEIGHT-obst.ob_h)
     spriteslist.add(obst) #add each obst on the list of sprites
     obst_spritelist.add(obst) #add each obst on the obstacle list
+    enemy = Enemy("enemy.png",obst.rect.center,enemies)
+    spriteslist.add(enemy)
 
 #to create the object ship from class Ship
 ship=Ship()
