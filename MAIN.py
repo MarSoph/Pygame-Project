@@ -64,36 +64,28 @@ def show(text) :
     surf = myFont.render(text,False,bg_color,pygame.Color("White"))
     screen.blit(surf,(0,0))
 
-while running:
+while life>0:
     #need to write the instractions here 
     #show(F"lives = {lives} , points = {points}")
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
-            running=False
-        #elif e.type == pygame.K_SPACE :
-         #   bul=ship.shoot()
-          #  bulls_spritelist.add(bul)
-           # spriteslist.add(bul) 
-        
-            
+            life=0 #to exit the while loop
+        if e.type==pygame.KEYDOWN:
+            if e.key == pygame.K_SPACE:
+                bul=ship.shoot()
+                bulls_spritelist.add(bul)
+                spriteslist.add(bul) 
+  
     keys=pygame.key.get_pressed()
     if keys[u]:
         ship.move_Up()
-    elif keys[d]:
+    if keys[d]:
         ship.move_Down()
-    elif keys[l]:
+    if keys[l]:
         ship.move_Backwards()
-    elif keys[r]:
+    if keys[r]:
         ship.move_Forward()
-    elif keys[pygame.K_SPACE]:
-        bul=ship.shoot()
-        bul.rect.x<=WIDTH
-        #bul.position()
-        bulls_spritelist.add(bul)
-        #spriteslist.add(bul)
-        #bulls_spritelist.update()
-        
-        
+       
          
     ship_collisionlist=pygame.sprite.spritecollide(ship,obst_spritelist,False)
     for obstacle in ship_collisionlist:
@@ -103,18 +95,12 @@ while running:
         ship.rect.x=x_startpos #starting at position after running into an obstacle
         ship.rect.y=y_startpos
     
-    #game logic here
-    #spriteslist.update()
-    #bulls_spritelist.update()
-    #obst_spritelist.update()
-    
+    #game logic here    
     screen.fill(bg_color) #flling the screen
     screen.blit(backim,(0,0))
-    bulls_spritelist.update()
-    obst_spritelist.update()
+    spriteslist.update()
     
     spriteslist.draw(screen) #draws all the sprites
-    bulls_spritelist.draw(screen)
    
     pygame.display.flip() #to update the screen
 
