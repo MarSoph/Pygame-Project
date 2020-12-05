@@ -9,12 +9,12 @@ Main code for the game
 
 import pygame
 import random
-import os,sys
+import os
 from obstacles import obstacles
 from Ship import Ship
-from Bullet import bullets
+#from Bullet import bullets
 from enemy import Enemy
-from pygame.math import Vector2
+#from pygame.math import Vector2
 
 WIDTH = 1200
 HEIGHT = 800
@@ -80,7 +80,7 @@ while life>0:
                 bul=ship.shoot()
                 bulls_spritelist.add(bul)
                 spriteslist.add(bul) 
-                pygame.mixer.Channel(1).play(pygame.mixer.Sound("C:/Users/ken_c/Downloads/pew.wav"))
+                pygame.mixer.Channel(1).play(pygame.mixer.Sound("pew.wav"))
   
     keys=pygame.key.get_pressed()
     if keys[u]:
@@ -100,7 +100,7 @@ while life>0:
         #running=False
         ship.rect.x=x_startpos #starting at position after running into an obstacle
         ship.rect.y=y_startpos
-        pygame.mixer.Channel(2).play(pygame.mixer.Sound("C:/Users/ken_c/Downloads/zap.mp3"))
+        pygame.mixer.Channel(2).play(pygame.mixer.Sound("zap.mp3"))
     
     #checking in a bullet is collided with an enemy and removes both the bullet and the enemy from the sprites list        
     bull_en_gcollisionlist=pygame.sprite.groupcollide(bulls_spritelist, enemies, True, True)
