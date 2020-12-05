@@ -70,7 +70,7 @@ def show(text) :
 
 while life>0:
     #need to write the instractions here 
-    #show(F"lives = {lives} , points = {points}")
+    show(F"lives = {life} , points = {score}") #IT DOESNT WORK
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             life=0 #to exit the while loop
@@ -94,10 +94,16 @@ while life>0:
     ship_collisionlist=pygame.sprite.spritecollide(ship,obst_spritelist,False)
     for obstacle in ship_collisionlist:
         life-=1
-        show(f"You have {life} left") #not a good idea
+        show(f"You have {life} left") #not a good idea #IT DOESNT WORK
         #running=False
         ship.rect.x=x_startpos #starting at position after running into an obstacle
         ship.rect.y=y_startpos
+    
+    #checking in a bullet is collided with an enemy and removes both the bullet and the enemy from the sprites list        
+    bull_en_gcollisionlist=pygame.sprite.groupcollide(bulls_spritelist, enemies, True, True)
+
+    #checking in a bullet is collided with an obstacle and removes the bullet from the sprites list        
+    bull_obst_gcollisionlist=pygame.sprite.groupcollide(bulls_spritelist, obst_spritelist, True, False)
     
     #game logic here    
     screen.fill(bg_color) #flling the screen
@@ -105,10 +111,15 @@ while life>0:
     spriteslist.update()
     
     spriteslist.draw(screen) #draws all the sprites
+    #obst_spritelist.draw(screen)
+    #bulls_spritelist.draw(screen)
+    #enemies.draw(screen)
    
     pygame.display.flip() #to update the screen
 
     clock.tick(FRAMERATE)
+    
+show("Game Over") #IT DOESNT WORK
 
 pygame.quit() 
 os._exit(0)
