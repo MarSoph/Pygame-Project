@@ -39,6 +39,7 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("WRITE SOMETHING HERE")
 pygame.mixer.music.load("Moderat - Ramadan.mp3")
+pygame.mixer.Channel(0).play(pygame.mixer.Sound("Moderat - Ramadan.mp3"))    
 pygame.mixer.music.play(-1)
 backim=pygame.image.load("wallpaper1.bmp")
 
@@ -79,6 +80,7 @@ while life>0:
                 bul=ship.shoot()
                 bulls_spritelist.add(bul)
                 spriteslist.add(bul) 
+                pygame.mixer.Channel(1).play(pygame.mixer.Sound("C:/Users/ken_c/Downloads/pew.wav"))
   
     keys=pygame.key.get_pressed()
     if keys[u]:
@@ -98,6 +100,7 @@ while life>0:
         #running=False
         ship.rect.x=x_startpos #starting at position after running into an obstacle
         ship.rect.y=y_startpos
+        pygame.mixer.Channel(2).play(pygame.mixer.Sound("C:/Users/ken_c/Downloads/zap.mp3"))
     
     #checking in a bullet is collided with an enemy and removes both the bullet and the enemy from the sprites list        
     bull_en_gcollisionlist=pygame.sprite.groupcollide(bulls_spritelist, enemies, True, True)
