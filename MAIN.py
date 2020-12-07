@@ -94,7 +94,16 @@ while life>0:
        
          
     ship_collisionlist=pygame.sprite.spritecollide(ship,obst_spritelist,False)
-    for obstacle in ship_collisionlist:
+    for obstacle in ship_collisionlist: #ship collides with obstacles
+        life-=1
+        show(f"You have {life} left") #not a good idea #IT DOESNT WORK
+        #running=False
+        ship.rect.x=x_startpos #starting at position after running into an obstacle
+        ship.rect.y=y_startpos
+        pygame.mixer.Channel(2).play(pygame.mixer.Sound("zap.mp3"))
+        
+    ship_encollisionlist=pygame.sprite.spritecollide(ship,enemies,False)
+    for en in ship_encollisionlist: #ship collides with enemies
         life-=1
         show(f"You have {life} left") #not a good idea #IT DOESNT WORK
         #running=False
