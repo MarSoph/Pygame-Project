@@ -47,7 +47,7 @@ pygame.mixer.music.load("Moderat - Ramadan.mp3")
 pygame.mixer.Channel(0).play(pygame.mixer.Sound("Moderat - Ramadan.mp3"))    
 pygame.mixer.music.play(-1)
 backim=pygame.image.load("wallpaper1.bmp")
-goimg = pygame.image.load("gameover.jpg")
+goimg = pygame.image.load("gameoverscreen (2).jpg")
 
 def play(objNUMBER):
     """
@@ -176,7 +176,7 @@ def play(objNUMBER):
             pygame.display.flip() #to update the screen
 
         elif life == 0:
-            screen.blit(goimg, (WIDTH/6,HEIGHT/6)) #to show the gameover picture on the screen
+            screen.blit(goimg, (0,0)) #to show the gameover picture on the screen
             pygame.display.flip()
             for e in pygame.event.get():
                 if e.type == pygame.QUIT:
