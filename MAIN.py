@@ -185,7 +185,7 @@ def play(objNUMBER):
                 elif e.type == pygame.KEYDOWN:
                     if e.key == pygame.K_RETURN:
                         life = 3
-                        play(objNUMBER)
+                        play(objNUMBER=10)
     
         clock.tick(FRAMERATE)
         
