@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Dec  3 18:10:32 2020
-
-@author: olumide
+ ---- WhiteSnake ----
 """
 
 import pygame
@@ -12,9 +10,13 @@ from pygame.math import Vector2
 from random import randint
 
 class Enemy(pygame.sprite.Sprite):
+    
+    """
+    docstring
+    """
+    
     def __init__(self,picture,pos,*group):
         super().__init__(*group)
-        #self.image = pygame.image.load(os.path.join(sys.path[0],picture))
         self.image=pygame.image.load(picture)
         self.rect = self.image.get_rect()
         self.pos = Vector2(pos)
@@ -29,7 +31,5 @@ class Enemy(pygame.sprite.Sprite):
 
 
 
-    """
-    docstring
-    """
+    
     
