@@ -22,7 +22,7 @@ HEIGHT = 800
 FRAMERATE=50
 bg_color = pygame.Color("grey")
 fg_color = pygame.Color("black")
-goimg = pygame.image.load("C:/Users\ken_c\Downloads\gameoverscreen (2).jpg")
+goimg = pygame.image.load("gameoverscreen (2).jpg")
 myfont = pygame.font.SysFont('Comic Sans MS', 30)
 
 x_startpos=0
@@ -43,8 +43,8 @@ clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("WRITE SOMETHING HERE")
-pygame.mixer.music.load("Moderat - Ramadan.mp3")
-pygame.mixer.Channel(0).play(pygame.mixer.Sound("Moderat - Ramadan.mp3"))    
+pygame.mixer.music.load("Ramadan.wav")
+pygame.mixer.Channel(0).play(pygame.mixer.Sound("Ramadan.wav"))    
 pygame.mixer.music.play(-1)
 backim=pygame.image.load("wallpaper1.bmp")
 
