@@ -2,7 +2,7 @@
 """
 Created on Wed Dec  2 21:13:52 2020
 
-@author: Sofokleous
+ ---- WhiteSnake ----
 """
 import pygame
 import os,sys
@@ -12,6 +12,11 @@ HEIGHT = 800
 border=50
 
 class Ship(pygame.sprite.Sprite):
+    
+    """
+    The class Ship is used to create the spaceship
+    https://www.101computing.net/pygame-how-to-control-your-sprite/
+    """
 
     move = 5
 
