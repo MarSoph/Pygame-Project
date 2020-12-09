@@ -24,8 +24,8 @@ class obstacles(pygame.sprite.Sprite): #to create a class of the obstacles
     """    
     
     global screen, fg_color,WIDTH,HEIGHT,bg_color
-    ob_w=80
-    ob_h=40
+    ob_w=60
+    ob_h=30
         
     def __init__(self):
         super().__init__()

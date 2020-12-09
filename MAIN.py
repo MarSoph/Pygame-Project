@@ -26,7 +26,7 @@ objNUMBER=10
 x_startpos=0
 y_startpos=HEIGHT/2
 life=3
-WINNING_SCORE=80
+WINNING_SCORE=100
 score=0 ## are we keeping this?
 running = True  
 u = pygame.K_UP
@@ -158,7 +158,6 @@ def play(objNUMBER):
     obst_spritelist=pygame.sprite.Group() #initialise a different list for all the obstacles
     bulls_spritelist=pygame.sprite.Group() #initialise a different list for all the bullets
     enemies = pygame.sprite.Group() # list of enemy sprites
-    finlinelist=pygame.sprite.Group()
     
     def create_objects(objNUMBER): 
         #to create 10 objects called obst from class obstacles
@@ -223,8 +222,8 @@ def play(objNUMBER):
                 """
                 score+=100
                 objNUMBER+=10
-                WINNING_SCORE+=100+10*(objNUMBER-life) #subtructing the value of life so that\
-                                            #if the player lost 1 or 2 lives they can still reach the next level
+                WINNING_SCORE+=100+10*(objNUMBER-3) #subtructing 3 so that\
+                                            #it will be slighly easier to reach the next level of difficulty
                 play(objNUMBER) #restarting the game with the new number of obstacles
 
             ship_collisionlist=pygame.sprite.spritecollide(ship,obst_spritelist,False)
@@ -270,12 +269,12 @@ def play(objNUMBER):
                 elif e.type == pygame.KEYDOWN:
                     if e.key == pygame.K_RETURN:
                         life = 3
+                        score=0
+                        WINNING_SCORE=100
                         mainmen()
-                        # play(objNUMBER=10)
     
         clock.tick(FRAMERATE)
         
- #the game starts by calling the play function
 mainmen() 
 pygame.quit() 
 os._exit(0)
