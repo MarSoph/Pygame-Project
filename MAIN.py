@@ -42,7 +42,7 @@ pygame.font.init()
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
-pygame.display.set_caption("WRITE SOMETHING HERE")
+pygame.display.set_caption("Astro - Nought")
 pygame.mixer.music.load("soundpart.wav")
 pygame.mixer.Channel(0).play(pygame.mixer.Sound("soundpart.wav"))    
 pygame.mixer.music.play(-1)
