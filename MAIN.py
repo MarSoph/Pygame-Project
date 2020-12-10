@@ -96,6 +96,8 @@ def mainmen():
         screen.blit(surf2,(-60 + WIDTH/2, 60 + HEIGHT/2, 200, 50))
         screen.blit(jefe,(0,0))
         screen.blit(chef,(WIDTH - chef.get_width(),0))
+        structdisp1 = font.render('ASTRO - NOUGHT', True, pygame.Color("white")) #display lives on screen
+        screen.blit(structdisp1, (-150 + WIDTH/2,HEIGHT/4))
         clock.tick(FRAMERATE)
 
 def guide():
@@ -114,7 +116,7 @@ def guide():
         pygame.display.update()
         screen.fill(bg_color) #flling the screen
         screen.blit(backim,(0,0))
-        structdisp1 = font.render('INSTRUCTIONS', True, pygame.Color("red")) #display lives on screen
+        structdisp1 = font.render('INSTRUCTIONS', True, pygame.Color("red"))
         screen.blit(structdisp1, (-100 + WIDTH/2,HEIGHT/9))
         structdisp2 = font.render('Join space exterminators Thor and Isaac', True, pygame.Color("white"))
         screen.blit(structdisp2, (-140 + WIDTH/3,HEIGHT/6))
